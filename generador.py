@@ -68,7 +68,7 @@ for c in cursos:
         for t in m.lt:
             if not t.es_url:
                 origen = 'material/' + t.archivo
-                destino = str(escuela['numero'])+'/'+str(c.anio)+c.division+'/'
+                destino = str(escuela['numero'])+'/'+str(c.id)+'/'
                 shutil.copy2(origen, destino)
     #cd = str(c.anio) + c.division
     cd = str(c.id)
