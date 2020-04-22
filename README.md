@@ -8,6 +8,9 @@ Un sitio Web para tu escuela, gratis y sin escribir código. Seguimos educando a
 - ¡Listo! Tu escuela ya tiene sitio Web.
 Seguimos educando hasta que pase el CoViD-19- #Quedateencasa
 
+## ¿Y cómo va a quedar el sitio?
+**¿Hay demo?** Hay demo: https://juansemarquez.github.io/sitioescuela_demo
+
 ## Créditos:
 - A todos los docentes, por su esfuerzo, vocación y profesionalismo para seguir educando en este difícil momento.
 - A todos los pibes y las pibas, que se tienen que quedar en casa. Gracias por darnos el ejemplo de que se puede aprender siempre, sin perder la alegría.
