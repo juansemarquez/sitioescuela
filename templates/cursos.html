@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Modificar cursos</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    </head>
+    <body class=text-center>
+        <h1>Generador de sitio escolar</h1>
+        <h2>Modificar datos de cursos</h2>
+        {% if mensaje %}
+            <div id="mensaje"  class="alert alert-primary">
+                <p>{{ mensaje }}</p>
+            </div>
+        {% endif %}
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Grado/Año</th><th>Division</th><th>Descripción</th>
+            </tr>
+            {% for c in cursos %}
+            <tr>
+                <td>{{ c.anio }}</td>
+                <td>{{c.division}}</td>
+                <td>{{c.descripcion}}</td>
+                <td>
+                    <form action="{{ url_for('update', id_curso = c.id) }}" method="get">
+                        <button type="submit" class="btn btn-warning">Modificar</button>
+                        {{ form.csrf_token }}
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ url_for('delete', id_curso=c.id) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        {{ form.csrf_token }}
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        <form action="{{ url_for('create') }}" method="get">
+            <button type="submit" class="btn btn-primary">Crear nuevo curso</button>
+            {{ form.csrf_token }}
+         </form>
+         <br>
+         <button type="button" onclick="window.location.href = '{{url_for('home')}}';" class="btn btn-primary">
+             Volver
+         </button>
+    </body>
+</html>

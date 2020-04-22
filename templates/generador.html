@@ -1,0 +1,82 @@
+<?php
+session_start();
+if ( $_SESSION['usuario'] !== '{{datos.usuario}}') {
+    die("Contraseña incorrecta");
+}
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Escuela Nº {{datos.numero_escuela}} "{{datos.nombre_escuela}}"</title>
+        <link rel="stylesheet" href="../static/estilo.css">
+    </head>
+    <body>
+        <div id="contenedor">
+            <div id="encabezado">
+                <img src="../static/logo.png" alt="Logo sitio" width="100"> 
+<h1>Escuela Nº {{datos.numero_escuela}} "{{datos.nombre_escuela}}"</h1>
+<h1>{{ datos.curso }}</h1>
+
+            </div>
+            <div class="lista_principal">
+            {% for m in datos.materias %}
+            <div class="materia" style="background-image: url('../static/logos/{{ m.logo }}')" onclick="verTrabajos({{m.id}});">
+                    <p class="nombre_materia">{{ m.nombre }}</p>
+                    <br> <p class="nombre_docente">{{m.docente}}<br>
+                    {% if m.cantidad == 0 %}
+                        Sin contenido aún
+                    {% elif m.cantidad == 1 %}
+                        1 elemento
+                    {% else %}
+                        {{ m.cantidad }} elementos
+                    {% endif %}
+                    </p>
+                </div>
+                <div id="trabajos{{m.id}}" class="trabajos_inactivo">
+                    <span class="cerrar" onclick="cerrarTrabajos({{m.id}})">&times;</span>
+                    <br>
+
+                    <h1>{{ m.nombre }}</h1>
+                    <h2>{{ m.docente }}</h2>
+                    <h2>{{ m.mail }}</h2>
+                    {% if m.lt %}
+                        {% for t in m.lt %}
+                        <div class="actividad">                            
+                            <p><strong>{{t.titulo}}</strong></p>
+                            <p>
+                            {% if t.descripcion %} 
+                               {{t.descripcion}} - 
+                            {% endif %}
+                            (Publicado el {{ t.publicado.day }}/{{ t.publicado.month }})
+                            {% if t.entrega %} 
+                                <br><strong>Fecha de entrega: {{t.entrega.day}}/{{t.entrega.month}}</strong>
+                            {% endif %}
+                            </p>
+                            <a href="{{t.archivo}}" class="boton">
+                                <!-- style="background-color:#2979FF"> -->
+                                Descargar 
+                            </a>
+
+                        </div>
+                        {% endfor %}
+                    {% else  %}
+                        <div class="actividad">                            
+                        <p>No hay material todavía</p>
+                        </div>
+                    {% endif  %}
+                <a href="#" class="boton" onclick="cerrarTrabajos({{ m.id }})">
+                    Volver
+                </a>
+            </div>
+            {% endfor %}
+            </div>
+
+            <div class="actividad" id="descargar">
+                <p>Última actualización: {{ datos.ahora.strftime("%d/%m/%Y - %H:%Mhs") }}</p>
+                <script src="../static/scripts.js"></script>
+            </div>
+        </div>
+    </body>
+</html>

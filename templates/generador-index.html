@@ -1,0 +1,36 @@
+<?php
+session_start();
+if ( $_SESSION['usuario'] !== '{{datos.usuario}}') {
+    die("Contraseña incorrecta");
+}
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Escuela Nº {{datos.numero_escuela}} "{{datos.nombre_escuela}}"</title>
+        <link rel="stylesheet" href="static/estilo.css">
+    </head>
+    <body>
+        <div id="contenedor">
+            <div id="encabezado">
+                <img src="../static/logo.png" alt="Logo sitio" width="100"> 
+<h1>Escuela Nº {{datos.numero_escuela}} "{{datos.nombre_escuela}}"</h1>
+
+            </div>
+            <div class="lista_principal">
+            {% for c in datos.cursos %}
+            <div class="materia" style="background-image: url('static/logo.png'" onclick="verCurso({{c.id}});">
+                    <p class="nombre_curso">{{ c }}</p>
+                </div>
+            {% endfor %}
+            </div>
+
+            <div class="actividad" id="descargar">
+                <p>Última actualización: {{ datos.ahora.strftime("%d/%m/%Y - %H:%Mhs") }}</p>
+                <script src="static/scripts.js"></script>
+            </div>
+        </div>
+    </body>
+</html>

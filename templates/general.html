@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Cursos</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    </head>
+    <body class=text-center>
+        <h1>Generador de sitio escolar</h1>
+        <h2>Modificar datos del curso</h2>
+        <form method="post" action="{{url_for('general')}}">
+            <label for="nombre">Nombre de la escuela: </label>
+            <input name="nombre" id="nombre" value="{{general[0]}}"><br>
+                <label for="numero">Número de la escuela: </label>
+                <input type="number" name="numero" id="numero" 
+                        value="{{general[1]}}"><br>
+                <label for="mail">Correo electrónico de la escuela: </label>
+                <input type="email" name="mail" id="mail" value="{{general[2]}}"><br>
+                {{ form.csrf_token }}
+                <input type="submit" value="Modificar datos de la escuela" class="btn btn-primary">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Modificar trabajos</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+        
+    </head>
+    <body class=text-center>
+        <h1>Generador de sitio escolar</h1>
+        <h2>Modificar datos de trabajos/actividades/materiales</h2>
+        {% if mensaje %}
+            <div id="mensaje" class="alert alert-primary">
+                <p>{{ mensaje }}</p>
+            </div>
+        {% endif %}
+        <h3>Filtrar por materia:</h3>
+        <form action="{{ url_for('trabajos_por_materia') }}" method="post">
+            <label for="materia">Materia:</label>
+            <select name="materia" id="materia">
+                <option value="0" selected>Todas las materias</option>
+                {% for m in materias %}
+                    <option value="{{m.id}}">{{m}}</option>
+                {% endfor %}                
+            </select>
+            {{ form.csrf_token }}
+            <input type="submit" value="Filtrar" class="btn btn-secondary">
+        </form>
+                
+        <h3>Trabajos/Actividades/Material de: 
+            {%if materia%}{{materia.nombre}} ({{materia.curso}})
+            {% else %}Todas las materias{% endif %}</h3>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Título</th><th>Descripción</th>
+                {% if not materia %}<th>Materia</th>{% endif %}                
+                <th>Publicada</th><th>Fecha entrega</th>
+                <th>Archivo/Enlace</th>
+                <th>Modificar</th><th>Eliminar</th>
+            </tr>
+            {% for t in trabajos %}
+            <tr>
+                <td>{{ t.titulo }}</td>
+                <td>{{ t.descripcion}}</td>
+                {% if not materia %}
+                    <td>{{t.materia.nombre}} ({{t.materia.curso.anio}} {{t.materia.curso.division}})</td>
+                {% endif %}                
+                <td>{{ t.publicado.day }}/{{ t.publicado.month }}/{{ t.publicado.year }}</td>
+                <td>{% if t.entrega %}{{ t.entrega.day }}/{{ t.entrega.month }}{%else%}No se entrega{%endif%}</td>
+                <td>{{ t.archivo }}</td>
+                <td>
+                    <form action="{{ url_for('update_trabajos', id_trabajo = t.id) }}" method="get">
+                        <button type="submit" class="btn btn-warning">Modificar</button>
+                        {{ form.csrf_token }}
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ url_for('delete_trabajos', id_trabajo=t.id) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        {{ form.csrf_token }}
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        {% if materia %}
+        <form action="{{ url_for('create_trabajos_materia', id_materia = materia.id) }}" method="get">
+        {% else %}
+        <form action="{{ url_for('create_trabajos') }}" method="get">
+        {% endif %}
+            <button type="submit" class="btn btn-primary">Crear nueva actividad / material / trabajo</button>
+            {{ form.csrf_token }}
+         </form><br>
+         <button type="button" onclick="window.location.href = '{{url_for('home')}}';" class="btn btn-primary">
+             Volver
+         </button>
+    </body>
+</html>

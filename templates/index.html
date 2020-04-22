@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Generador</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+        
+    </head>
+    <body class=text-center>
+        <h1>Generador de sitio escolar</h1>
+        <button type="button" onclick="window.location.href = '{{ url_for('general') }}'" class="btn btn-primary">
+            Modificar datos de la escuela
+        </button><br><br>
+        <button type="button" onclick="window.location.href = '{{ url_for('cursos') }}'" class="btn btn-primary">
+            Modificar datos de los cursos
+        </button><br><br>
+        <button type="button" onclick="window.location.href = '{{ url_for('materias') }}'" class="btn btn-primary">
+            Modificar datos de las materias
+        </button><br><br>
+        <button type="button" onclick="window.location.href = '{{ url_for('trabajos') }}'" class="btn btn-primary">
+            Modificar datos de materiales y actividades
+        </button>
+    </body>
+</html>

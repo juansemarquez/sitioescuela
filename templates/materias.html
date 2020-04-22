@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Modificar materias</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+        
+    </head>
+    <body class=text-center>
+        <h1>Generador de sitio escolar</h1>
+        <h2>Modificar datos de materias</h2>
+        {% if mensaje %}
+            <div id="mensaje" class="alert alert-primary">
+                <p>{{ mensaje }}</p>
+            </div>
+        {% endif %}
+        <form action="{{url_for('materias_por_curso')}}" method="post">
+            <label for="curso">Filtrar por curso: </label>
+            <select name="curso" id="curso">
+                <option value="0">Todos los cursos</option>
+                {% for c in cursos %}
+                    <option value="{{ c.id }}">{{c}}</option>
+                {% endfor %}                
+            </select>
+            {{ form.csrf_token }}
+            <input type="submit" value="Filtrar" class="btn btn-secondary">
+        </form>
+
+        <br>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Nombre</th><th>Curso</th><th>Docente</th><th>Mail</th>
+                <th>¿Siempre arriba?</th><th>Logo</th>
+                <th>Modificar</th><th>Eliminar</th>
+            </tr>
+            {% for m in materias %}
+            <tr>
+                <td>{{ m.nombre }}</td>
+                <td>{{ m.curso.descripcion}}</td>
+                <td>{{ m.docente }}</td>
+                <td>{%if m.mail%}{{ m.mail }}{%else%}Sin correo{%endif%}</td>
+                <td>{% if m.sticky %} Sí {% else %} No {% endif %}</td>
+                <td><img src="{{url_for('static', filename = "logos/" + m.logo) }}" width="100px"></td>
+                <td>
+                    <form action="{{ url_for('update_materia', id_materia = m.id) }}" method="get">
+                        <button type="submit" class="btn btn-warning">Modificar</button>
+                        {{ form.csrf_token }}
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ url_for('delete_materia', id_materia=m.id) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        {{ form.csrf_token }}
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        {% if curso %}        
+            <form action="{{ url_for('create_materia_curso',id_curso = curso.id) }}" method="get">
+        {% else %}
+            <form action="{{ url_for('create_materia') }}" method="get">
+        {% endif %}
+            <button type="submit" class="btn btn-primary">Crear nueva materia</button>
+            {{ form.csrf_token }}
+         </form>
+         <br>
+         <button type="button" onclick="window.location.href = '{{url_for('home')}}';" class="btn btn-primary">
+             Volver
+         </button>
+    </body>
+</html>

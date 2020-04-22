@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Materias</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    </head>
+    <body class=text-center>
+        <h1>Generador de sitio escolar</h1>
+        {% if materia %}
+            <h2>Modificar datos de la materia</h2>
+            <form method="post" action="{{url_for('update_materia', id_materia = materia.id )}}">
+                <input type="hidden" name="id_materia" value="{{materia.id}}">
+        {% else %}
+        <h2>Añadir nueva materia</h2>
+            <form method="post" action="{{url_for('create_materia')}}">
+        {% endif %}
+                <label for="nombre">Nombre de la materia:</label>
+                <input name="nombre" id="nombre" required
+                {% if materia %}value="{{materia.nombre}}"{%endif%}><br>
+                <label for="curso">Curso: </label>
+                <select name="curso" id="curso">
+                {% for c in cursos %}
+                    <option value="{{c.id}}"
+                        {% if (curso and curso.id == c.id) or (materia and materia.curso.id == c.id) %}
+                            selected
+                        {% endif %}
+                    >{{c.descripcion}}</option>
+                {% endfor %}
+                </select><br>
+                
+                <label for="docente">Docente: </label>
+                <input type="text" name="docente" id="docente" 
+                {% if materia %}value="{{materia.docente}}"{%endif%}><br>
+
+                <label for="mail">Correo del docente: </label>
+                <input type="text" name="mail" id="mail"
+                {% if materia %}value="{{materia.mail}}"{%endif%}><br>
+
+
+                <input type="checkbox" name="sticky" id="sticky"
+                    {% if materia.sticky %}checked{% endif %}>
+                <label for="sticky"> ¿Siempre arriba?</label><br>
+                {% if materia %}<input type="checkbox" name="cambiar_logo" 
+                id="cambiar_logo" onchange="habilitar_archivo(this)">
+                <label for="cambiar_logo">Cambiar logo:</label>{%endif%}
+                <label for="logo">Logo: </label>
+                <input type="file" name="logo" id="logo" accept="image/png, image/jpeg, image/gif"
+                    {% if materia %}disabled{%endif%} onchange="actualizarVistaPrevia()"><br>
+
+                <div class="alert alert-info w-50 mx-auto">
+                <p>Recordá que los logos deben estar guardados en la carpeta <strong>"static/logos"</strong>. (¡Hay un montón para elegir! (Gracias a <a href="https://illlustrations.co/">este artista</a>).</p>
+                </div>
+                <div id="vista_previa" style="width: 200px; border: solid 1px black" class="mx-auto">
+                    {% if materia %}
+                    <img src="{{url_for('static',filename='logos/'+ materia.logo) }}" 
+                    alt="{{materia.logo}}" style="width: 100%">                    
+                    {%else%}
+                        <p>Sin logo</p>
+                    {%endif%}
+                </div>
+                {{ form.csrf_token }}
+                {% if materia %}
+                    <input type="submit" value="Modificar datos de la materia" class="btn btn-primary">
+                {% else %}
+                    <input type="submit" value="Añadir materia" class="btn btn-primary">
+                {% endif %}
+        </form>
+        <script charset="utf-8">
+function habilitar_archivo(e) {
+    const logo = document.getElementById("logo");
+    logo.disabled = !(e.checked);
+    logo.required = e.checked;
+}
+function actualizarVistaPrevia() {
+    const logo = document.querySelector('#logo');
+    const vista_previa = document.querySelector('#vista_previa');
+
+  //Vaciar la vista previa
+  while(vista_previa.firstChild) {
+    vista_previa.removeChild(vista_previa.firstChild);
+  }
+
+  const curFiles = logo.files;
+  if(curFiles.length === 0) {
+    const para = document.createElement('p');
+    para.textContent = 'No se ha seleccionado ningún logo';
+    vista_previa.appendChild(para);
+  } else {
+    //const list = document.createElement('ol');
+    //vista_previa.appendChild(list);
+
+    for(const file of curFiles) {
+      const listItem = document.createElement('li');
+      const para = document.createElement('p');
+      if(validFileType(file)) {
+        //para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+        const image = document.createElement('img');
+        image.style = "width: 100%";
+        image.src = URL.createObjectURL(file);
+        vista_previa.appendChild(image);
+
+        //listItem.appendChild(image);
+        //listItem.appendChild(para);
+      } else {
+        para.textContent = `Archivo: ${file.name}. No sirve, tiene que ser una imagen de menos de 1MB.`;
+        vista_previa.appendChild(para);
+      }
+
+      //list.appendChild(listItem);
+    }
+  }
+}
+
+const fileTypes = [
+  "image/gif",
+  "image/jpeg",
+  "image/png",
+];
+
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+
+function returnFileSize(number) {
+  if(number < 1024) {
+    return number + 'bytes';
+  } else if(number >= 1024 && number < 1048576) {
+    return (number/1024).toFixed(1) + 'KB';
+  } else if(number >= 1048576) {
+    return (number/1048576).toFixed(1) + 'MB';
+  }
+}
+        </script>
+    </body>
+</html>
