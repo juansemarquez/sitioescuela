@@ -10,11 +10,11 @@
         <h1>Generador de sitio escolar</h1>
         {% if trabajo %}
             <h2>Modificar datos del trabajo/actividad/material</h2>
-            <form method="post" action="{{url_for('update_trabajos', id_trabajo = trabajo.id )}}">
+            <form method="post" action="{{url_for('update_trabajos', id_trabajo = trabajo.id )}}" enctype=multipart/form-data>
                 <input type="hidden" name="id_trabajo" value="{{trabajo.id}}">
         {% else %}
             <h2>Añadir nuevo trabajo/actividad/material</h2>
-            <form method="post" action="{{url_for('create_trabajos')}}">
+            <form method="post" action="{{url_for('create_trabajos')}}" enctype=multipart/form-data>
         {% endif %}
                 <label for="titulo">Título del trabajo/actividad/material:</label>
                 <input name="titulo" id="titulo" 
@@ -71,7 +71,7 @@
                     {%endif%}
                 {%endif%}
                 <div class="alert alert-info w-50 mx-auto">
-                <p>Recordá que los archivos deben estar guardados en la carpeta <strong>"material"</strong>. Los nombres de archivo no deberían contener ni espacio, ni tilde, ni ñ. Solamente las 26 letras del inglés, números, guión ( - ) y guión bajo ( _ ).</p>
+                    Tipos de archivo permitidos: {{ tipos }} 
                 </div>
 
                 <br>
@@ -95,12 +95,16 @@ function arch_url(e) {
     if (e.value == "url") {
         a.disabled = true;
         ar.disabled = true;
+        ar.required = false;
         u.disabled = false;
+        u.required = true;
     }
     else {
         a.disabled = false;
         ar.disabled = false;
+        ar.required = true;
         u.disabled = true;
+        u.required = false;
     }
 }
         
@@ -109,6 +113,7 @@ function modificar_nombre_archivo(e) {
     const a = document.getElementById("archivo");
     // Para sacar el "fakepath"
     a.value = nombre.substring(12)
+    e.required = true;
 }
 
 

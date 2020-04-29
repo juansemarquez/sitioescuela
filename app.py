@@ -16,7 +16,23 @@ import datetime
 import webbrowser
 from threading import Timer
 
+### PARA PERMITIR SUBIR ARCHIVOS ###
+import os
+from flask import flash 
+from werkzeug.utils import secure_filename
+UPLOAD_FOLDER = 'material'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'doc', 'docx', 
+                      'mp3', 'odt', 'ods', 'xls', 'xlsx', 'ppt', 'pptx', }
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    if not '.' in filename:
+        return False
+    return filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+####################################
+
+# app = Flask(__name__) (ya está en la parte de archivos)
 csrf = CSRFProtect(app)
 app.secret_key = b't\x97A\xca\x93<\x15\xf3\xdf\xbe\xf8G\xeeV\xda\xaa'
 csrf.init_app(app)
@@ -297,9 +313,10 @@ def create_trabajos(materia = None):
         form = FlaskForm()
         materias = rm.get_all()
         return render_template("nuevo_trabajo.html", form = form, mensaje=None, 
-                trabajo=None, materias = materias, hoy=hoy, materia = materia)
+                          trabajo=None, materias = materias, materia = materia, 
+                          hoy=hoy,tipos = ", ".join(ALLOWED_EXTENSIONS))
     else:
-        # Capturar los datos del request 
+        # Capturar los datos del request
         titulo = request.form["titulo"]
         descripcion = request.form["descripcion"]
         id_materia = request.form["materia"]
@@ -309,11 +326,38 @@ def create_trabajos(materia = None):
             fecha_entrega = request.form["entrega"]
         else:
             fecha_entrega = None
-        archivo = request.form["archivo"]
         es_url = request.form["opcion_archivo"] == "url"
         materia = rm.get_one(id_materia)
+        
+        # Manejo de archivos:
+        print("################### ARCHIVOS ##########################")
+        print(request.files.get("archivo_real").filename)
+        if 'archivo_real' in request.files:
+            archivo_real = request.files['archivo_real']
+        
+            # FIXME: ¿Habría que advertir si eligen archivo pero no suben nada?
+            # (ya está hecho por js)
+            # if archivo_real.filename == '':
+            if archivo_real and allowed_file(archivo_real.filename):
+                filename = secure_filename(archivo_real.filename)
+                archivo = filename
+                try:
+                    archivo_real.save(os.path.join(app.config['UPLOAD_FOLDER'],
+                                                   filename))
+                except:
+                    #FIXME: Manejar esta excepción. TODO
+                    raise
+            else:
+                # FIXME: Manejar esta excepción
+                raise
+        else:
+            archivo = request.form["archivo"]
+        
+        
         trabajo = Trabajo(None, titulo, descripcion, fecha_publicada, 
                             fecha_entrega, archivo, materia, es_url)
+
+
         #GUARDAR EL NUEVO TRABAJO
         rt = RepositorioTrabajo()
         id_trabajo = rt.create(trabajo)
@@ -335,15 +379,16 @@ def create_trabajos_materia(id_materia):
 def update_trabajos(id_trabajo):
    rm = RepositorioMateria()
    rt = RepositorioTrabajo()
+   trabajo_actual = rt.get_one(int(id_trabajo))
+   
    if request.method == "GET":
-        trabajo = rt.get_one(int(id_trabajo))
-        if not trabajo:
+        if not trabajo_actual:
             return "Error: trabajo no encontrada. id_trabajo: "+str(id_trabajo)
         hoy = datetime.date.today()
         form = FlaskForm()
         materias = rm.get_all()
         return render_template("nuevo_trabajo.html", form = form, mensaje=None, 
-                trabajo=trabajo, materias = materias, hoy=hoy)
+                trabajo=trabajo_actual, materias = materias, hoy=hoy)
    else:
         # Capturar los datos del request 
         idt = request.form["id_trabajo"]
@@ -355,11 +400,37 @@ def update_trabajos(id_trabajo):
             fecha_entrega = request.form["entrega"]
         else:
             fecha_entrega = None
-        archivo = request.form["archivo"]
         es_url = request.form["opcion_archivo"] == "url"
         materia = rm.get_one(id_materia)
+        
+        # Manejo de archivos:
+        if 'archivo_real' in request.files and \
+                request.form["archivo"] != trabajo_actual.archivo:
+            archivo_real = request.files['archivo_real']
+        
+            # FIXME: ¿Habría que advertir si eligen archivo pero no suben nada?
+            # (ya está hecho por js)
+            # if archivo_real.filename == '':
+            if archivo_real and allowed_file(archivo_real.filename):
+                filename = secure_filename(archivo_real.filename)
+                archivo = filename
+                try:
+                    archivo_real.save(os.path.join(app.config['UPLOAD_FOLDER'],
+                                                   filename))
+                except:
+                    #FIXME: Manejar esta excepción. TODO
+                    raise
+            else:
+                # FIXME: Manejar esta excepción
+                raise
+        else:
+            archivo = request.form["archivo"]
+        
+        
         trabajo = Trabajo(idt, titulo, descripcion, fecha_publicada, 
                             fecha_entrega, archivo, materia, es_url)
+
+
         #HACER EL UPDATE
         resultado = rt.update(trabajo)
         if resultado:
