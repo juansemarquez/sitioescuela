@@ -9,6 +9,17 @@
     </head>
     <body class=text-center>
         <h1>Generador de sitio escolar</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flashes alert alert-info">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
         <button type="button" onclick="window.location.href = '{{ url_for('general') }}'" class="btn btn-primary">
             Modificar datos de la escuela
         </button><br><br>
@@ -20,6 +31,11 @@
         </button><br><br>
         <button type="button" onclick="window.location.href = '{{ url_for('trabajos') }}'" class="btn btn-primary">
             Modificar datos de materiales y actividades
+        </button><br><br><br>
+
+        <button type="button" onclick="window.location.href = '{{ url_for('dale') }}'" class="btn btn-primary">
+            Generar el sitio Web de la escuela ahora
         </button>
+        <br>
     </body>
 </html>

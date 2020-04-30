@@ -452,6 +452,17 @@ def delete_trabajos(id_trabajo):
     #Redirigir a materias: 
     return redirect(url_for('trabajos', mensaje = mensaje))
 
+#################################################
+###  EJECUTAR EL GENERADOR DE SITIO ESTÁTICO  ###
+#################################################
+@app.route('/generador')
+def dale():
+    # exec(open("generador.py").read())
+    from generador import generar
+    flash(generar())
+    return redirect(url_for('home'))
+
+
 def open_browser():
       webbrowser.open_new('http://127.0.0.1:2345/')
 
