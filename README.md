@@ -37,6 +37,8 @@ Por única vez, ejecutá el siguiente comando:
 $ python -m pip install flask flask_wtf
 ```
 
+`sitioescuela` también utiliza `tkinter`. Asegurate de que tu sistema tenga instalado el paquete `python3-tk` o similar.
+
 ## Uso
 
 Para empezar a usar `sitioescuela`, ejecutá:
