@@ -44,21 +44,6 @@ function cerrarTrabajos(id_materia) {
     });
 }
 
-function mostrarMail(usuario="consultas", dominio="---") 
-{
-    if (usuario == "consultas" && dominio=="---") {
-        return usuario+"@secundariamargis.com";
-    }
-    else if (dominio == "---") {
-        return usuario+"@gmail.com";
-    }
-    else if (dominio == "h") {
-        return usuario+"@hotmail.com";
-    }
-    else {
-        return usuario+"@"+dominio;
-    }
-}
 
 
 
