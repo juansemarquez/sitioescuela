@@ -59,13 +59,23 @@ def general():
         nombre = request.form["nombre"]
         numero = request.form["numero"]
         mail = request.form["mail"]
+        tipo_hosting = request.form["tipo_hosting"]
+        if tipo_hosting == "gitlab":
+            usuario= request.form["usuario_gitlab"]
+            proyecto= request.form["proyecto_gitlab"]
         
         #HACER EL UPDATE
-        rc = RepositorioCurso() 
-        if rc.actualizar_general(nombre, numero, mail):
-            mensaje = "Datos de la escuela modificados"
-        else:
-            mensaje = "Error al modificar los datos de la escuela"
+        rc = RepositorioCurso()
+        if tipo_hosting == "gitlab":
+            if rc.actualizar_general(nombre, numero, mail, usuario, proyecto):
+                mensaje = "Datos de la escuela y el proyecto modificados"
+            else:
+                mensaje = "Error al modificar los datos de la escuela"
+        else: 
+            if rc.actualizar_general(nombre, numero, mail):
+                mensaje = "Datos de la escuela modificados"
+            else:
+                mensaje = "Error al modificar los datos de la escuela"
         #Redirigir a cursos: 
         return redirect(url_for('home', mensaje = mensaje))
 

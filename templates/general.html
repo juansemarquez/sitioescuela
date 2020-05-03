@@ -11,14 +11,46 @@
         <h2>Modificar datos del curso</h2>
         <form method="post" action="{{url_for('general')}}">
             <label for="nombre">Nombre de la escuela: </label>
-            <input name="nombre" id="nombre" value="{{general[0]}}"><br>
-                <label for="numero">Número de la escuela: </label>
-                <input type="number" name="numero" id="numero" 
-                        value="{{general[1]}}"><br>
-                <label for="mail">Correo electrónico de la escuela: </label>
-                <input type="email" name="mail" id="mail" value="{{general[2]}}"><br>
-                {{ form.csrf_token }}
-                <input type="submit" value="Modificar datos de la escuela" class="btn btn-primary">
+            <input name="nombre" id="nombre" value="{{general[0]}}" required><br>
+            <label for="numero">Número de la escuela: </label>
+            <input type="number" name="numero" id="numero" 
+                        value="{{general[1]}}" required><br>
+            <label for="mail">Correo electrónico de la escuela: </label>
+            <input type="email" name="mail" id="mail" value="{{general[2]}}" required><br>
+            {{ form.csrf_token }}
+            
+            <input type="radio" name="tipo_hosting" value="propio" onchange="gitlab(this.value)"
+            {% if not general[3] %}checked{%endif%}>                
+            Publicaré el sitio en el hosting propio de la escuela <br>
+            <input type="radio" name="tipo_hosting" value="gitlab" onchange="gitlab(this.value);"
+            {% if general[3] %}checked{%endif%}>
+            Quiero un sitio Web gratuito en GitLab pages <br>  
+            <label for="usuario_gitlab">Usuario de GitLab: </label>
+            <input name="usuario_gitlab" id="usuario_gitlab" 
+            {% if general[3] %}value="{{general[3]}}" required
+            {% else %} value="" disabled
+            {%endif%}> <br>
+                
+            <label for="proyecto_gitlab">Proyecto de GitLab: </label>
+            <input name="proyecto_gitlab" id="proyecto_gitlab" 
+            {% if general[3] %}value="{{general[4]}}" required
+            {% else %} value="" disabled
+            {%endif%}> <br>
+
+            <input type="submit" value="Modificar datos de la escuela" class="btn btn-primary">
         </form>
+        <script charset="utf-8">
+            function gitlab(estado) {
+                if (estado == "propio") {
+                    document.getElementById("usuario_gitlab").disabled = true;
+                    document.getElementById("proyecto_gitlab").disabled = true;
+                }
+                else {
+                    document.getElementById("usuario_gitlab").disabled = false;
+                    document.getElementById("proyecto_gitlab").disabled = false;
+                    document.getElementById("usuario_gitlab").focus();
+                }
+            }                 
+        </script>
     </body>
 </html>
