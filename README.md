@@ -37,17 +37,18 @@ Por única vez, ejecutá el siguiente comando:
 $ python -m pip install flask flask_wtf
 ```
 
-`sitioescuela` también utiliza `tkinter`. Asegurate de que tu sistema tenga instalado el paquete `python3-tk` o similar.
+Si querés utilizar el generador sin usar la app, `sitioescuela` necesita `tkinter`. En este caso, asegurate de que tu sistema tenga instalado el paquete `python3-tk` o similar.
 
 ## Uso
 
-Para empezar a usar `sitioescuela`, ejecutá:
+Para empezar a usar `sitioescuela`, ejecutá el archivo `app.py` con Python.
+O desde la terminal:
 
 ```bash
-$ flask run
+$ python app.py
 ```
 
-Se iniciará un servidor en `http://127.0.0.1:5000/`. Desde ahí vas a poder:
+Se iniciará un servidor en `http://127.0.0.1:2345/`, y se abrirá una pestaña del navegador. Desde ahí vas a poder:
 
 1. Actualizar los datos de tu escuela
 2. Generar y mantener los cursos, materiales y actividades
