@@ -5,7 +5,6 @@ import shutil, os
 import pathlib
 import sqlite3
 import datetime
-import tkinter
 from jinja2 import Environment, PackageLoader  
 from curso import Curso
 from repositorio_generador import RepositorioGenerador
@@ -99,6 +98,7 @@ def generar(parametros = None):
 
     # Generamos las páginas de todos los cursos/grados:
     for c in cursos:
+        print("Generando la página del curso ", str(c.anio), c.division)
         materias = rg.get_all_curso( c )
         #carpeta = str(escuela['numero']) + '/' + str(c.anio) + c.division
         carpeta = 'sitio_para_subir/' + str(c.id)
@@ -135,7 +135,7 @@ def generar(parametros = None):
         with open("sitio_para_subir/"+str(c.id)+'/index.html', 
                   'w', encoding='utf-8') as file:
             file.write(x)
-            return "El sitio se ha generado con éxito"
+    return "El sitio se ha generado con éxito"
 
 if __name__ == '__main__':
     parametros = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])[1]
