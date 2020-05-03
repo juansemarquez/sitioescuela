@@ -19,36 +19,28 @@
             <input type="email" name="mail" id="mail" value="{{general[2]}}" required><br>
             {{ form.csrf_token }}
             
-            <input type="radio" name="tipo_hosting" value="propio" onchange="gitlab(this.value)"
+            <input type="radio" name="tipo_hosting" value="propio" onchange="github(this.value)"
             {% if not general[3] %}checked{%endif%}>                
             Publicaré el sitio en el hosting propio de la escuela <br>
-            <input type="radio" name="tipo_hosting" value="gitlab" onchange="gitlab(this.value);"
+            <input type="radio" name="tipo_hosting" value="github" onchange="github(this.value);"
             {% if general[3] %}checked{%endif%}>
-            Quiero un sitio Web gratuito en GitLab pages <br>  
-            <label for="usuario_gitlab">Usuario de GitLab: </label>
-            <input name="usuario_gitlab" id="usuario_gitlab" 
+            Quiero un sitio Web gratuito en GitHub pages <br>  
+            <label for="usuario_github">Usuario de Github: </label>
+            <input name="usuario_github" id="usuario_github" 
             {% if general[3] %}value="{{general[3]}}" required
-            {% else %} value="" disabled
-            {%endif%}> <br>
-                
-            <label for="proyecto_gitlab">Proyecto de GitLab: </label>
-            <input name="proyecto_gitlab" id="proyecto_gitlab" 
-            {% if general[3] %}value="{{general[4]}}" required
             {% else %} value="" disabled
             {%endif%}> <br>
 
             <input type="submit" value="Modificar datos de la escuela" class="btn btn-primary">
         </form>
         <script charset="utf-8">
-            function gitlab(estado) {
+            function github(estado) {
                 if (estado == "propio") {
-                    document.getElementById("usuario_gitlab").disabled = true;
-                    document.getElementById("proyecto_gitlab").disabled = true;
+                    document.getElementById("usuario_github").disabled = true;
                 }
                 else {
-                    document.getElementById("usuario_gitlab").disabled = false;
-                    document.getElementById("proyecto_gitlab").disabled = false;
-                    document.getElementById("usuario_gitlab").focus();
+                    document.getElementById("usuario_github").disabled = false;
+                    document.getElementById("usuario_github").focus();
                 }
             }                 
         </script>
