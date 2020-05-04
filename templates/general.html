@@ -31,15 +31,23 @@
             {% else %} value="" disabled
             {%endif%}> <br>
 
+            <label for="clave_github">Clave de Github: </label>
+            <input name="clave_github" id="clave_github" 
+            {% if general[3] %}value="{{general[4]}}" required
+            {% else %} value="" disabled
+            {%endif%}> <br>
+
             <input type="submit" value="Modificar datos de la escuela" class="btn btn-primary">
         </form>
         <script charset="utf-8">
             function github(estado) {
                 if (estado == "propio") {
                     document.getElementById("usuario_github").disabled = true;
+                    document.getElementById("clave_github").disabled = true;
                 }
                 else {
                     document.getElementById("usuario_github").disabled = false;
+                    document.getElementById("clave_github").disabled = false;
                     document.getElementById("usuario_github").focus();
                 }
             }                 

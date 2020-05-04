@@ -39,7 +39,12 @@ csrf.init_app(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html", mensaje = None)
+    rc = RepositorioCurso()
+    general = rc.get_general()
+    if general[3]:
+        return render_template("index.html", mensaje = None, hay_repo = True)
+    else:
+        return render_template("index.html", mensaje = None, hay_repo = False)
 
 
 #################################################
@@ -62,11 +67,13 @@ def general():
         tipo_hosting = request.form["tipo_hosting"]
         if tipo_hosting == "github":
             usuario= request.form["usuario_github"]
+            clave = request.form["clave_github"]
+
         
         #HACER EL UPDATE
         rc = RepositorioCurso()
         if tipo_hosting == "github":
-            if rc.actualizar_general(nombre, numero, mail, usuario):
+            if rc.actualizar_general(nombre, numero, mail, usuario, clave):
                 mensaje = "Datos de la escuela y el proyecto modificados"
             else:
                 mensaje = "Error al modificar los datos de la escuela"
@@ -471,6 +478,19 @@ def dale():
     flash(generar())
     return redirect(url_for('home'))
 
+@app.route('/subir')
+def subir():
+    import subprocess
+    rc = RepositorioCurso()
+    general = rc.get_general()
+    if general[2] and general[3] and general[4]:
+        x =subprocess.run(["./publicador.sh",general[3],general[2],general[4]], 
+                stdout=subprocess.PIPE, encoding="utf-8")
+        flash(x.stdout)
+        return redirect(url_for('home'))
+    else:
+        flash("Error: sin mail, usuario o contraseña para subir el sitio")
+        return redirect(url_for('home'))
 
 def open_browser():
       webbrowser.open_new('http://127.0.0.1:2345/')

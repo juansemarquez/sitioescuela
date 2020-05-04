@@ -70,52 +70,52 @@ class RepositorioCurso:
 
     def get_general(self):
         general_sql = "SELECT nombre_escuela, numero_escuela, mail_contacto, \
-                usuario_github FROM general;"
+                usuario_github, clave_github FROM general;"
         self.cursor.execute(general_sql)
         row = self.cursor.fetchone()
         return row
 
-    def actualizar_general(self, nom, num = None, mail = None, u=None):
+    def actualizar_general(self, nom, num = None, mail = None, u=None, c=None):
         if not num and not mail and not u:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = NULL, mail_contacto = NULL, \
-                usuario_github = NULL WHERE id=1"
+                usuario_github = NULL, clave_github = NULL WHERE id=1"
             datos = [ nom ]
         elif not num and not u:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = NULL, mail_contacto = ?, \
-                usuario_github = NULL WHERE id=1"
+                usuario_github = NULL, clave_github = NULL WHERE id=1"
             datos = [ nom, mail ]
         elif not mail and not u:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = ?, mail_contacto = NULL, \
-                usuario_github = NULL WHERE id=1"
+                usuario_github = NULL, clave_github = NULL WHERE id=1"
             datos = [ nom, num ]
         elif not u:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = ?, mail_contacto = ?, \
-                usuario_github = NULL WHERE id=1"
+                usuario_github = NULL, clave_github = NULL WHERE id=1"
             datos = [ nom, num, mail ]
         elif not num and not mail:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = NULL, mail_contacto = NULL, \
-                usuario_github = ? WHERE id=1"
-            datos = [ nom, u ]
+                usuario_github = ?, clave_github = ? WHERE id=1"
+            datos = [ nom, u, c ]
         elif not num:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = NULL, mail_contacto = ?, \
-                usuario_github = ? WHERE id=1"
-            datos = [ nom, mail, u ]
+                usuario_github = ?, clave_github = ? WHERE id=1"
+            datos = [ nom, mail, u, c ]
         elif not mail:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = ?, mail_contacto = NULL, \
-                usuario_github = ? WHERE id=1"
-            datos = [ nom, num, u ]
+                usuario_github = ?, clave_github = ? WHERE id=1"
+            datos = [ nom, num, u, c ]
         else:
             general_sql = "UPDATE general SET nombre_escuela = ?, \
                 numero_escuela = ?, mail_contacto = ?, \
-                usuario_github = ? WHERE id=1"
-            datos = [ nom, num, mail, u ]
+                usuario_github = ?, clave_github = ? WHERE id=1"
+            datos = [ nom, num, mail, u, c ]
 
         if self.cursor.execute(general_sql, datos):
             self.bd.commit()

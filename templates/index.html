@@ -35,7 +35,13 @@
 
         <button type="button" onclick="window.location.href = '{{ url_for('dale') }}'" class="btn btn-primary">
             Generar el sitio Web de la escuela ahora
+        </button><br><br>
+
+        <button type="button" onclick="window.location.href = '{{ url_for('subir') }}'" class="btn btn-primary"
+        {% if not hay_repo %}disabled{% endif %}>
+            Subir el sitio Web a Internet
         </button>
+
         <br>
     </body>
 </html>
