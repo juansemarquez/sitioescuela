@@ -187,7 +187,7 @@ def materias(id_curso = None):
     return render_template("materias.html", mensaje = mensaje, 
             materias = materias, form=form, cursos = cursos, curso = curso)
 
-@app.route("/materias_por_curso/", methods= ["POST"])
+@app.route("/materias_por_curso/", methods= ["GET","POST"])
 def materias_por_curso():
     id_curso = request.form["curso"]
     return materias(id_curso)
@@ -223,8 +223,9 @@ def create_materia(curso = None):
         else:
             mensaje = "Error al crear la materia"
 
-        #Redirigir a cursos: 
-        return redirect(url_for('materias', mensaje = mensaje))
+        #Redirigir a cursos:        
+        flash(mensaje)
+        return materias(id_curso)
 
 @app.route("/materias/nuevo/<int:id_curso>")
 def create_materia_curso(id_curso):
