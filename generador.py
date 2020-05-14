@@ -17,16 +17,6 @@ def falta_archivo(archivo, trabajo=None, materia=None, curso=None):
         error += f" del trabajo {trabajo.titulo} de {materia.nombre}"
         error += f" de {curso}"
     error += ". No subas nada, que se rompió."
-    # print("Error: "+error)
-    # tkinter.messagebox.showerror(title=None, message=error, **options)
-    # root = tkinter.Tk()
-    # root.title("¡Epa!")
-    # label = tkinter.Label(root, text=error)
-    # label.pack(side="top", fill="both", expand=True, padx=20, pady=20)
-    # button = tkinter.Button(root, text="De acuerdo, lo voy a revisar", 
-    #            command=lambda: root.destroy())
-    #button.pack(side="bottom", fill="none", expand=True)
-    #root.mainloop()
     if os.path.isdir('sitio_para_subir'):
         shutil.rmtree('sitio_para_subir')
     return error
@@ -40,7 +30,6 @@ def generar(parametros = None):
     import pathlib
     import sqlite3
     import datetime
-    import tkinter
     from jinja2 import Environment, PackageLoader  
     from curso import Curso
     from repositorio_generador import RepositorioGenerador
