@@ -347,8 +347,8 @@ def create_trabajos(materia = None):
         materia = rm.get_one(id_materia)
         
         # Manejo de archivos:
-        print("################### ARCHIVOS ##########################")
-        print(request.files.get("archivo_real").filename)
+        # print("################### ARCHIVOS ##########################")
+        # print(request.files.get("archivo_real").filename)
         if 'archivo_real' in request.files:
             archivo_real = request.files['archivo_real']
         
