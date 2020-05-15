@@ -52,7 +52,7 @@ class RepositorioGenerador:
         trabajos_sql = "SELECT id, titulo, descripcion, fecha_publicada, \
                 fecha_entrega, archivo, es_url \
                 FROM material WHERE id_materia = ? \
-                ORDER BY fecha_publicada asc;"
+                ORDER BY fecha_publicada desc;"
                  
         self.cursor.execute(trabajos_sql, [ materia ])
         trabajos = []
