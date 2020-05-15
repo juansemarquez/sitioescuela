@@ -9,6 +9,7 @@ from trabajo import Trabajo
 
 from flask import Flask
 from flask import render_template, request, redirect, url_for
+from flaskwebgui import FlaskUI
 from flask_wtf.csrf import CSRFProtect
 from flask_wtf import FlaskForm
 
@@ -25,6 +26,8 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'doc', 'docx',
                       'mp3', 'odt', 'ods', 'xls', 'xlsx', 'ppt', 'pptx', }
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ui = FlaskUI(app)
+
 
 def allowed_file(filename):
     if not '.' in filename:
@@ -497,5 +500,6 @@ def open_browser():
       webbrowser.open_new('http://127.0.0.1:2345/')
 
 if __name__=="__main__":
-    Timer(1,open_browser).start()
-    app.run(debug=False, port=2345)
+    # Timer(1,open_browser).start()
+    ui.run()
+    # app.run(debug=False, port=2345)
