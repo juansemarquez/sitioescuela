@@ -37,8 +37,6 @@ Por única vez, ejecutá el siguiente comando:
 $ python -m pip install flask flask_wtf
 ```
 
-Si querés utilizar el generador sin usar la app, `sitioescuela` necesita `tkinter`. En este caso, asegurate de que tu sistema tenga instalado el paquete `python3-tk` o similar.
-
 ## Uso
 
 Para empezar a usar `sitioescuela`, ejecutá el archivo `app.py` con Python.
