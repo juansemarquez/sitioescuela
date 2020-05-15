@@ -67,6 +67,10 @@
                     <input type="submit" value="Añadir materia" class="btn btn-primary">
                 {% endif %}
         </form>
+         <button type="button" onclick="window.location.href = '{{url_for('materias')}}';" class="btn btn-primary">
+             Volver
+         </button>
+
         <script charset="utf-8">
 function habilitar_archivo(e) {
     const logo = document.getElementById("logo");

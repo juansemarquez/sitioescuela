@@ -32,6 +32,9 @@
                     <input type="submit" value="Añadir curso" class="btn btn-primary">
                 {% endif %}
         </form>
+         <button type="button" onclick="window.location.href = '{{url_for('cursos')}}';" class="btn btn-primary">
+             Volver
+         </button>
         <script src="{{ url_for('static', filename='flaskwebgui.js') }}" charset="utf-8"></script>
     </body>
 </html>

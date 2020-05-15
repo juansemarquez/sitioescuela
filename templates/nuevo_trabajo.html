@@ -82,6 +82,9 @@
                     <input type="submit" value="Añadir trabajo/actividad/material" class="btn btn-primary">
                 {% endif %}
         </form>
+         <button type="button" onclick="window.location.href = '{{url_for('trabajos')}}';" class="btn btn-primary">
+             Volver
+         </button>
         <script charset="utf-8">
 function habilita_entrega(e) {
     const fecha_ent = document.getElementById("entrega");
