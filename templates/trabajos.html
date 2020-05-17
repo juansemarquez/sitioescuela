@@ -15,18 +15,6 @@
                 <p>{{ mensaje }}</p>
             </div>
         {% endif %}
-        <h3>Filtrar por materia:</h3>
-        <form action="{{ url_for('trabajos_por_materia') }}" method="post">
-            <label for="materia">Materia:</label>
-            <select name="materia" id="materia">
-                <option value="0" selected>Todas las materias</option>
-                {% for m in materias %}
-                    <option value="{{m.id}}">{{m}}</option>
-                {% endfor %}                
-            </select>
-            {{ form.csrf_token }}
-            <input type="submit" value="Filtrar" class="btn btn-secondary">
-        </form>
                 
         <h3>Trabajos/Actividades/Material de: 
             {%if materia%}{{materia.nombre}} ({{materia.curso}})
@@ -72,6 +60,21 @@
             <button type="submit" class="btn btn-primary">Crear nueva actividad / material / trabajo</button>
             {{ form.csrf_token }}
          </form><br>
+
+        <h3>Filtrar por materia:</h3>
+        <form action="{{ url_for('trabajos_por_materia') }}" method="post">
+            <label for="materia">Materia:</label>
+            <select name="materia" id="materia">
+                <option value="0" selected>Todas las materias</option>
+                {% for m in materias %}
+                    <option value="{{m.id}}">{{m}}</option>
+                {% endfor %}                
+            </select>
+            {{ form.csrf_token }}
+            <input type="submit" value="Filtrar" class="btn btn-secondary">
+        </form>
+
+        <br>
          <button type="button" onclick="window.location.href = '{{url_for('home')}}';" class="btn btn-primary">
              Volver
          </button>
