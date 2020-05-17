@@ -11,46 +11,8 @@ Seguimos educando hasta que pase el CoViD-19- #Quedateencasa
 ## ¿Y cómo va a quedar el sitio?
 **¿Hay demo?** Hay demo: https://juansemarquez.github.io/sitioescuela_demo
 
-## Instalación
-
-### Antes de empezar
-
-> :warning: `sitioescuela` corre con python 3.6 o superior. Si tenés mas de una instalación de python, lee esta sección. De lo contrario, podés ignorarla.
-
-Para poder usar python3 por defecto con `sitioescuela` instalá primero `venv`:
-
-```bash
-$ python3 -m venv venv
-```
-
-Ahora, cada vez que te muevas dentro del directorio del proyecto, vas a tener que ejecutar el siguiente comando:
-
-```bash
-$ . venv/bin/activate
-```
-
-### Dependencias
-
-Por única vez, ejecutá el siguiente comando:
-
-```bash
-$ python -m pip install flask flask_wtf
-```
-
-## Uso
-
-Para empezar a usar `sitioescuela`, ejecutá el archivo `app.py` con Python.
-O desde la terminal:
-
-```bash
-$ python app.py
-```
-
-Se iniciará un servidor en `http://127.0.0.1:2345/`, y se abrirá una pestaña del navegador. Desde ahí vas a poder:
-
-1. Actualizar los datos de tu escuela
-2. Generar y mantener los cursos, materiales y actividades
-3. Generar un sitio estático que podés subir por ejemplo a [github pages](https://pages.github.com/). El sitio se generará en el directorio `sitio_para_subir/`
+## Instalación y descargas
+[Entrá a nuestra página para descargar y ver un completo tutorial](https://juansemarquez.github.io/sitioescuela)
 
 ## Créditos:
 - A todos los docentes, por su esfuerzo, vocación y profesionalismo para seguir educando en este difícil momento.
