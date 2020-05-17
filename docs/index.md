@@ -1,6 +1,12 @@
 # sitioescuela
 Un sitio Web para tu escuela, gratis y sin escribir código. Seguimos educando aun en la pandemia.
+
+# Tutorial
 [Ver tutorial completo](tuto.md)
+
+# Descargas
+* [Descargar para GNU/Linux](sitioescuela.zip)
+* [Descargar para Windows](sitioescuela-win.zip)
 
 ## Funcionamiento:
 - Un crud en Flask para cargar una Base de datos sqlite (suena difícil, pero es fácil: solamente hay que escribir los nombres de las materias, de los docentes de tu escuela, etc).
@@ -10,7 +16,7 @@ Un sitio Web para tu escuela, gratis y sin escribir código. Seguimos educando a
 Seguimos educando hasta que pase el CoViD-19- #Quedateencasa
 
 ## ¿Y cómo va a quedar el sitio?
-**¿Hay demo?** Hay demo: https://juansemarquez.github.io/sitioescuela_demo
+**¿Hay demo?** [Hay demo](https://juansemarquez.github.io/sitioescuela_demo)
 
 ## Tutorial
 Tenemos [un completo tutorial](tuto.md) para que puedas instalarlo, generar el sitio y subirlo a la Web. [Hacé clic acá para verlo](tuto.md)
