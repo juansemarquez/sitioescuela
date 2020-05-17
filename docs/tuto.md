@@ -13,6 +13,7 @@ escribirnos a sitioescuela@juansemarquez.com
 
 Basta de prólogos, y manos a la obra.
 
+---
 ## 1- Instalación:
 ### <a id="1a"></a> 1a- Instalación en GNU/Linux
 (Si usás Windows, leé [el próximo apartado](#1b). Si no usás Windows, mejor.)
@@ -26,12 +27,16 @@ Basta de prólogos, y manos a la obra.
 * Descomprimílo
 * Ingresá en la carpeta en donde está el programa, y ejecutá el archivo `app.exe`
 
+---
+
 ## 2- CRUD en Flask
 Ahora que arrancó el programa, se va a abrir tu navegador Web, para que cargues los datos de tu escuela, cursos, materias, y actividades de cada materia.
 Es un trabajo que toma su tiempo la primera vez, pero después se va haciendo cada vez más simple.
 Al inicio, vas a ver una pantalla parecida a la siguiente:
 
 ![Pantalla de inicio](img/tuto1.png)
+
+---
 
 ### 2.1 Datos de la escuela
 El primero de los botones, te permite cargar los datos de tu escuela:
@@ -41,6 +46,8 @@ El primero de los botones, te permite cargar los datos de tu escuela:
 Los campos llamados "Usuario de Github" y "Clave de Github", solamente tenés que 
 completarlos si querés tener un sitio gratuito en Github Pages. Seguí leyendo, 
 que [te lo explicamos más adelante](#4.2)
+
+---
 
 ### 2.2 Datos de los cursos / grados
 El segundo botón te permite cargar los datos de los cursos/grados/años/"comosellamen" de tu escuela.
@@ -56,6 +63,8 @@ Pero vos podés borrar/modificar lo que quieras. Eso sí:
 de que no tenga [materias](#2.3) cargadas
 
 El botón que se ve al final, te permite ingresar un nuevo grado/curso.
+
+---
 
 ### <a id="2.3"></a>2.3 Datos de las materias
 
@@ -74,6 +83,8 @@ solamente las materias de un solo curso/grado:
 
 ![Filtro para la pantalla de carga de materias](img/tuto5.png)
 
+---
+
 Pulsando en el botón para cargar una nueva materia, tenés que cargar los datos 
 de la nueva asignatura:
 
@@ -91,6 +102,7 @@ de la carpeta `static/logos`, tal como se muestra en la imagen:
 
 ![Selección de logo](img/tuto7.png)
 
+---
 
 ### <a id="2.4"></a>2.4 Datos de los trabajos/actividades
 El cuarto botón te permite cargar los trabajos / actividades / materiales para cada una de las materias.
@@ -103,8 +115,12 @@ enseguida te podés perder.
 Al final de la lista, vas a encontrar una herramienta para *filtrar*, de manera 
 que puedas ver solamente los trabajos de una cierta materia.
 
+---
+
 Pulsando en el botón para cargar un nuevo trabajo / actividad, vas a tener que 
 cargar los datos del trabajo:
+
+![Pantalla de carga de nuevo trabajo](img/tuto8.png)
 
 * Título para el trabajo/actividad
 * Descripción breve del trabajo/actividad
@@ -114,10 +130,13 @@ cargar los datos del trabajo:
 * Una de las siguientes opciones:
     * Nombre de la URL (dirección Web) donde está el trabajo, o bien:
     * Nombre del archivo (pdf, jpg, mp3, etc) con los datos del trabajo, que se subirá a la página.
+---
 
 ## 3. Generar el sitio Web
 En la pantalla inicial, el quinto botón nos permite generar el sitio Web.
+
 ![Pantalla de inicio - Sitio generado](img/tuto10.png)
+
 Simplemente pulsamos el botón, y esperamos que nos muestre el mensaje de que 
 **el sitio se ha generado con éxito**.
 
@@ -131,6 +150,8 @@ Si querés ver cómo va a quedar el sitio, podés hacer doble-clic en el archivo
 
 ![Sitio para subir - index](img/tuto12.png)
 
+---
+
 ## 4. Subir el sitio a la Web
 
 ### 4.1 Con hosting propio
@@ -140,7 +161,7 @@ Si la escuela tiene hosting propio, podés subirlo con tu cliente favorito
 
 Si no, seguí leyendo que te explicamos cómo conseguir un hosting gratuito.
 
-### <a id="4.2"></a>4.2 En GuiHub Pages (gratis)
+### <a id="4.2"></a>4.2 En GitHub Pages (gratis)
 
 Antes de poder subir un sitio a GitHub Pages, vas a tener que crearte una cuenta 
 en GitHub.com
@@ -160,7 +181,7 @@ Hay muchos tutoriales en la Web que lo explican muy bien,
 Ingresá en https://github.com, y creá una nueva cuenta. Tenés que usar un mail 
 real, al que tengas acceso.
 
-**Tené en cuenta que el nombre de usuario que elijas, va a ser la dirección 
+:warning: **Tené en cuenta que el nombre de usuario que elijas, va a ser la dirección 
 donde tus alumnos accedan a la página de la escuela**
 
 ![Github](img/github/01.png)
@@ -201,6 +222,8 @@ Por último, en Github, debemos configurar las Pages, haciendo clic en Settings.
 **¡Listo!** Ahora, cada vez que volvamos a generar el sitio cuando haya algún 
 cambio, *podemos volver a publicarlo automáticamente, pulsando el último de los 
 botones* de la aplicación.
+
+---
 
 ## 5. Hacer backups
 
