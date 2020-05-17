@@ -14,6 +14,10 @@ Seguimos educando hasta que pase el CoViD-19- #Quedateencasa
 ## Instalación y descargas
 [Entrá a nuestra página para descargar y ver un completo tutorial](https://juansemarquez.github.io/sitioescuela)
 
+*Todavía no pude "empaquetar" el programa para que sea fácil de usar en GNU/Linux y Windows.*
+Hay que descargar el código fuente, instalar dependencias con pip, y así se puede usar.
+
+
 ## Créditos:
 - A todos los docentes, por su esfuerzo, vocación y profesionalismo para seguir educando en este difícil momento.
 - A todos los pibes y las pibas, que se tienen que quedar en casa. Gracias por darnos el ejemplo de que se puede aprender siempre, sin perder la alegría.

@@ -5,8 +5,8 @@ Un sitio Web para tu escuela, gratis y sin escribir código. Seguimos educando a
 [Ver tutorial completo](tuto.md)
 
 # Descargas
-* [Descargar para GNU/Linux](sitioescuela.zip)
-* [Descargar para Windows](sitioescuela-win.zip)
+* [Descargar para GNU/Linux](sitioescuela.zip) **No anda**
+* [Descargar para Windows](sitioescuela-win.zip) **No anda**
 
 ## Funcionamiento:
 - Un crud en Flask para cargar una Base de datos sqlite (suena difícil, pero es fácil: solamente hay que escribir los nombres de las materias, de los docentes de tu escuela, etc).
