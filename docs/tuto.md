@@ -38,10 +38,13 @@ El primero de los botones, te permite cargar los datos de tu escuela:
 
 ![Pantalla de carga de datos de la escuela](img/tuto2.png)
 
+<<<<<<< HEAD
 Los campos llamados "Usuario de Github" y "Clave de Github", solamente tenés que 
 completarlos si querés tener un sitio gratuito en Github Pages. Seguí leyendo, 
 que [te lo explicamos más adelante](#4.2)
 
+=======
+>>>>>>> 71a7ad58ed94628c7ed0de9996a1cd1389654fab
 ### 2.2 Datos de los cursos / grados
 El segundo botón te permite cargar los datos de los cursos/grados/años/"comosellamen" de tu escuela.
 
@@ -58,7 +61,10 @@ de que no tenga [materias](#2.3) cargadas
 El botón que se ve al final, te permite ingresar un nuevo grado/curso.
 
 ### <a id="2.3"></a>2.3 Datos de las materias
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71a7ad58ed94628c7ed0de9996a1cd1389654fab
 El tercer botón te permite cargar los datos para las materias de cada curso.
 
 ![Pantalla de carga de materias](img/tuto4.png)
@@ -132,6 +138,7 @@ Si querés ver cómo va a quedar el sitio, podés hacer doble-clic en el archivo
 ![Sitio para subir - index](img/tuto12.png)
 
 ## 4. Subir el sitio a la Web
+<<<<<<< HEAD
 
 ### 4.1 Con hosting propio
 
@@ -147,10 +154,37 @@ en GitHub.com
 
 #### 4.2.1 Instalar git
 
+=======
+### 4.1 Con hosting propio
+Si la escuela tiene hosting propio, podés subirlo con tu cliente favorito (como *Filezilla*, por ejemplo).
+Si no, seguí leyendo que te explicamos cómo conseguir un hosting gratuito.
+
+### 4.2 En GuiHub Pages (gratis)
+Antes de poder subir un sitio a GitHub Pages, vas a tener que crearte una cuenta en GitHub.com
+#### 4.2.1 Instalar git
+>>>>>>> 71a7ad58ed94628c7ed0de9996a1cd1389654fab
 Tenés que tener instalado `git` en tu máquina.
 
 Si usás GNU/Linux (Ubuntu/Debian/Mint/etc), podés ejecutar el comando:
 `sudo apt install git`
+<<<<<<< HEAD
+=======
+Si usás Windows :roll_eyes:, podés descargar git gratuitamente e instalarlo. Hay muchos tutoriales en la Web que lo explican muy bien, [este por ejemplo](https://myhanoli.com/2018/08/25/5-pasos-para-instalar-git-en-windows/).
+#### 4.2.2 Crear una cuenta en GitHub
+Ingresá en https://github.com, y creá una nueva cuenta. Tenés que usar un mail real, al que tengas acceso.
+**Tené en cuenta que el nombre de usuario que elijas, va a ser la dirección donde tus alumnos accedan a la página de la escuela**
+![Github](img/github/01.png)
+Completá el captcha, y algunas otras preguntas que te hace GitHub. 
+![Github](img/github/02.png)
+Revisá tu mail, para que te llegue la activación.
+![Mail de activación](img/github/04.png)
+Cuando nos diga que el mail se ha verificado, elegimos crear un nuevo repositorio.
+![Crear repo](img/github/05.png)
+> :warning: **El nombre que elijas para el repositorio debe ser: `tu-nombre-de-usuario.github.io`**
+![Crear repo](img/github/06.png)
+Ahora, en la app, tenés que ingresar al primero de los botones, el que tiene los datos de la escuela, y cargar los datos de GitHub:
+![Datos de Github](img/tuto13.png)
+>>>>>>> 71a7ad58ed94628c7ed0de9996a1cd1389654fab
 
 Si usás Windows :roll_eyes:, podés descargar git gratuitamente e instalarlo. 
 Hay muchos tutoriales en la Web que lo explican muy bien, 
@@ -163,12 +197,26 @@ real, al que tengas acceso.
 **Tené en cuenta que el nombre de usuario que elijas, va a ser la dirección 
 donde tus alumnos accedan a la página de la escuela**
 
+<<<<<<< HEAD
 ![Github](img/github/01.png)
 
 Completá el captcha, y algunas otras preguntas que te hace GitHub. 
+=======
+## 5. Hacer backups
+Estuviste trabajando un rato largo, muchos cursos, materias y trabajos para cargar...
+Sería un garrón que tanto trabajo se perdiera.
+Para hacer un backup tenés que guardar **en un lugar seguro, y en otra máquina**:
+* El archivo `bd.sqlite`
+* La carpeta `material`
+
+### 5.1 Recuperar mi trabajo a partir de un backup.
+Supongamos que "te mudás" a otra computadora. Entonces, volvés a descargar el programa, como se indica [al principio](#1a), y reemplazás el archivo `bd.sqlite` que descargaste por el que habías guardado en tu backup.
+Además, tenés que copiar todo lo que hay en la carpeta `material` de tu backup a la carpeta `material` de la nueva instalación.
+>>>>>>> 71a7ad58ed94628c7ed0de9996a1cd1389654fab
 
 ![Github](img/github/02.png)
 
+<<<<<<< HEAD
 Revisá tu mail, para que te llegue la activación.
 
 ![Mail de activación](img/github/04.png)
@@ -223,3 +271,5 @@ la carpeta `material` de la nueva instalación.
 
 Y listo, el programa está tal cual lo habías dejado la última vez.
 
+=======
+>>>>>>> 71a7ad58ed94628c7ed0de9996a1cd1389654fab
