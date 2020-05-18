@@ -7,6 +7,8 @@ Un sitio Web para tu escuela, gratis y sin escribir código. Seguimos educando a
 # Descarga
 [Descargar el programa](https://github.com/juansemarquez/sitioescuela/archive/master.zip)
 
+![Demo del sitio](img/demo.png)
+
 ## Funcionamiento:
 - Un crud en Flask para cargar una Base de datos sqlite (suena difícil, pero es fácil: solamente hay que escribir los nombres de las materias, de los docentes de tu escuela, etc).
 - Un generador estático que crea el sitio en HTML ¡Sin escribir código!
