@@ -1,12 +1,12 @@
 # sitioescuela
-Un sitio Web para tu escuela, gratis y sin escribir código. Seguimos educando aun en la pandemia.
+Un sitio Web para tu escuela, gratis y sin escribir código. Gracias por seguir educando aun en la pandemia.
 
 ![Vista del sitio construido](docs/img/demo.png)
 
 ## Funcionamiento:
 - Un crud en Flask para cargar una Base de datos sqlite (suena difícil, pero es fácil: solamente hay que escribir los nombres de las materias, de los docentes de tu escuela, etc).
 - Un generador estático que crea el sitio en HTML ¡Sin escribir código!
-- Si querés, lo subís a cualquier servidor. Y si la escuela no tiene hosting, se "sube" solo a GitHub Pages (próximamente).
+- Si querés, lo subís a cualquier servidor. Y si la escuela no tiene hosting, se "sube" solo a GitHub Pages.
 - ¡Listo! Tu escuela ya tiene sitio Web.
 Seguimos educando hasta que pase el CoViD-19- #Quedateencasa
 
