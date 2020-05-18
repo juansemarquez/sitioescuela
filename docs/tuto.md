@@ -16,10 +16,6 @@ Basta de prólogos, y manos a la obra.
 ---
 ## 1- Instalación:
 
-Los archivos de instalación no andan todavía. Tenés que descargar el código fuente del
-repositorio, e instalar las dependencias con pip (flask, flask_wtf y flaskwebgui),
-y luego usar el programa.
-
 ### <a id="1a"></a> 1a- Instalación en GNU/Linux
 (Si usás Windows, leé [el próximo apartado](#1b). Si no usás Windows, mejor. 
 :stuck_out_tongue_closed_eyes: )
