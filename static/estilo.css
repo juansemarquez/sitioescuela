@@ -86,7 +86,12 @@ a.boton:active{
     border-radius: 1em;
     background-size: cover;
     position: relative;
+    cursor: pointer ; 
+    transition: 0.5s all ;
     background-color: #EEF5EA;
+}
+.materia:hover {
+    box-shadow: 2px 2px 10px black;
 }
 .nombre_materia {
     font-family: 'comfortaa',sans-serif;
