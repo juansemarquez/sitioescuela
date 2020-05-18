@@ -6,15 +6,7 @@
 html {
     font-size: 1.3vw;
 }
-@media(max-width: 599px) {
-    #contenedor, #contenido, #encabezado h1, .materia, .actividad {
-        font-size: 12px;
-    }
-    #encabezado h2, #encabezado h3 {
-        font-size: 10px;
-    }
 
-}
 body {
     background-color: #271C33;
     background-image: url('madera.jpg');
@@ -248,9 +240,20 @@ a.boton:active{
         color: inherit;
         text-decoration: underline;
     }
-
-        
-
 }
 
+@media(max-width: 599px) {
+    #contenedor, #contenido, #encabezado h1, .actividad {
+        font-size: 12px;
+    }
+    #encabezado h2, #encabezado h3 {
+        font-size: 10px;
+    }
+    .nombre_materia {
+        font-size: 12px;
+    }
+    .nombre_docente {
+        font-size: 10px;
+    }
 
+}
