@@ -21,22 +21,55 @@ repositorio, e instalar las dependencias con pip (flask, flask_wtf y flaskwebgui
 y luego usar el programa.
 
 ### <a id="1a"></a> 1a- Instalación en GNU/Linux
-(Si usás Windows, leé [el próximo apartado](#1b). Si no usás Windows, mejor.)
-* Descargá el archivo [sitioescuela.zip](sitioescuela.zip) **No anda**
-* Descomprimílo
-* Ingresá en la carpeta en donde está el programa, y ejecutá el archivo `iniciar.sh`
+(Si usás Windows, leé [el próximo apartado](#1b). Si no usás Windows, mejor. 
+:stuck_out_tongue_closed_eyes: )
+* **Actualizar lista de paquetes:** En una terminal, ejecutar el comando 
+`sudo apt update`
+* **Prerrequisito: instalar python3** En la mayoría de las distros ya viene 
+instalado, pero, por las dudas, abrí una terminal y escribí el comando 
+`python3 -V` --> (letra "v" mayúscula).
+    * Si la respuesta es `Python 3.X.Y`, donde `X` e `Y` son cualquier número, 
+ya está instalado. 
+    * Si no, escribí el comando: `sudo apt install python3`
+* **Instalar pip3 y venv:** escribí el comando 
+`sudo apt install python3-pip python3-venv`
+* Descargá el archivo: [https://github.com/juansemarquez/sitioescuela/archive/master.zip](https://github.com/juansemarquez/sitioescuela/archive/master.zip), descomprimílo, e ingresá en la carpeta del programa:
+    * lo podés hacer en modo gráfico, 
+    * o con el comando: 
+`wget https://github.com/juansemarquez/sitioescuela/archive/master.zip && 
+ unzip master.zip && 
+ cd sitioescuela-master` (todo en una sola línea)
+* **Crear el entorno virtual:** Ejecutá el comando `python3 -m venv venv`
+* **Activar el entorno virtual:** `. venv/bin/activate`
+* Dentro del entorno virtual, ejecutar el comando: `pip3 install flask flask_wtf`
+* Listo, el sistema ya se puede utilizar como se indica [a partir del punto 2](#2).
 
 ### <a id="1b"></a> 1b- Instalación en Windows
 (Si usás GNU/Linux, leé [el apartado anterior](#1a))
-* Descargá el archivo [sitioescuela-win.zip](sitioescuela-win.zip) **No anda**
-* Descomprimílo
-* Ingresá en la carpeta en donde está el programa, y ejecutá el archivo `app.exe`
+* **Prerrequisito: Instalar Python 3:** Hay muchos tutoriales de cómo instalar
+Python 3, [este, por ejemplo](https://python-para-impacientes.blogspot.com/2017/02/instalar-python-paso-paso.html)
+    * Tiene que ser la versión 3.6 o superior. 
+    * Es importante instalar pip (es una de las opciones del instalador, y ya viene parcada por defecto), 
+    * y añadir Python al PATH (está explicado en el tutorial).
+* Descargá el archivo: 
+[https://github.com/juansemarquez/sitioescuela/archive/master.zip](https://github.com/juansemarquez/sitioescuela/archive/master.zip)
+* Descomprimílo.
+* Ingresá en la carpeta en donde está el programa, y ejecutá el archivo `instalar_windows.bat`
+* Listo, el sistema ya se puede utilizar como se indica [a partir del punto 2](#2).
 
 ---
 
-## 2- CRUD en Flask
-Ahora que arrancó el programa, se va a abrir tu navegador Web, para que cargues los datos de tu escuela, cursos, materias, y actividades de cada materia.
-Es un trabajo que toma su tiempo la primera vez, pero después se va haciendo cada vez más simple.
+## <a id="2"></a> 2- CRUD en Flask
+Para iniciar el programa:
+* **En GNU/Linux:** con el archivo `iniciar.sh`
+* **En Windows:** con el archivo `iniciar_windows.bat`
+
+Ahora que arrancó el programa, se va a abrir tu navegador Web, para que cargues 
+los datos de tu escuela, cursos, materias, y actividades de cada materia.
+
+Es un trabajo que toma su tiempo la primera vez, pero después se va haciendo 
+cada vez más simple.
+
 Al inicio, vas a ver una pantalla parecida a la siguiente:
 
 ![Pantalla de inicio](img/tuto1.png)

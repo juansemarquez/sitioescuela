@@ -14,9 +14,30 @@ Seguimos educando hasta que pase el CoViD-19- #Quedateencasa
 ## Instalación y descargas
 [Entrá a nuestra página para descargar y ver un completo tutorial](https://juansemarquez.github.io/sitioescuela)
 
-*Todavía no pude "empaquetar" el programa para que sea fácil de usar en GNU/Linux y Windows.*
-Hay que descargar el código fuente, instalar dependencias con pip, y así se puede usar.
+## ¿Y para que sirve el sitio?
+El flujo de trabajo sería más o menos así:
+- Los docentes de todas las materias preparan actividades para los pibes, 
+- y se las mandan por mail a un coordinador (¿vos?) que las va cargando en la
+base de datos (es fácil).
+- Una vez por semana (o cuando a vos te parezca), *generás* el sitio Web
+(pulsando un botón),
+- y lo publicás, en un servidor que tenga la escuela o en GitHub Pages, que es gratis
+(esto último se puede hacer automáticamente con este mismo programa, pulsando otro botón).
+- Los alumnos ingresan al sitio, y ven/descargan las actividades para su grado/curso.
+- Hacen la actividad, y consultan/entregan vía mail con el docente.
+Es decir: los pibes tienen todas las actividades que les van proponiendo los 
+docentes en un solo lugar.
 
+## Aclaraciones importantes:
+* No es un LMS, ni nada sofisticado, es una idea muy simple.
+* Los alumnos no interactúan con los docentes a través de la plataforma, tenés
+que dejarles un mail, número de teléfono, etc. para establecer el contacto.
+* Si se te ocurre alguna mejora o sugerencia, todas las ideas son bienvenidas.
+Y si las querés implementar vos, más bienvenida todavía.
+* Este programa es **software libre**. Se ofrece libremente, gratis, y con la 
+mejor onda, pero no podemos ofrecer garantías, tal como lo 
+establece la licencia GPL. Igual, si algo se complica, escribínos y tratamos de
+ayudarte, siempre que nos sea posible.
 
 ## Créditos:
 - A todos los docentes, por su esfuerzo, vocación y profesionalismo para seguir educando en este difícil momento.
