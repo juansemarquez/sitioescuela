@@ -8,6 +8,7 @@ import datetime
 from jinja2 import Environment, PackageLoader  
 from curso import Curso
 from repositorio_generador import RepositorioGenerador
+from repositorio_curso import RepositorioCurso
 
 def falta_archivo(archivo, trabajo=None, materia=None, curso=None):
     '''Esta función se invoca antes de lanzar la excepción por la falta de
@@ -49,7 +50,31 @@ def generar(parametros = None):
             cursos.append(rg.get_one_curso(int(p)))
 
     if os.path.isdir('sitio_para_subir'):
-        shutil.rmtree('sitio_para_subir')
+        # shutil.rmtree('sitio_para_subir')
+        os.rename('sitio_para_subir','sps')
+        if os.path.isdir('sps/.git'):
+            try:
+                os.mkdir('sitio_para_subir')
+                shutil.copytree('sps/.git','sitio_para_subir/.git')
+            except:
+                os.rename('sps', 'sitio_para_subir')
+                return falta_archivo('sps/.git')
+        shutil.rmtree('sps')
+        
+    # else:
+        # try:
+            # os.mkdir('sitio_para_subir')
+            #os.chdir('sitio_para_subir')
+            # print(os.getcwd())
+            # subprocess.check_call(['git'] + ['init'])
+            # rc = RepositorioCurso()
+            # general = rc.get_general()
+            # subprocess.check_call(['git'] + ['config','user.name', general[3]])
+            # subprocess.check_call(['git'] + ['config','user.email',general[2]]) 
+            # os.chdir('..')
+            # print(os.getcwd())
+        # except:
+            # return falta_archivo('No pude iniciar el nuevo repositorio')
 
     carpeta = 'sitio_para_subir/static/fuentes'
     pathlib.Path(carpeta).mkdir(parents=True, exist_ok=True)

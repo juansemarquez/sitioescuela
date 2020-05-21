@@ -488,7 +488,7 @@ def subir():
     rc = RepositorioCurso()
     general = rc.get_general()
     if general[2] and general[3] and general[4]:
-        x =subprocess.run(["./publicador.sh",general[3],general[2],general[4]], 
+        x =subprocess.run(["./publicador.sh",general[3],general[4]], 
                 stdout=subprocess.PIPE, encoding="utf-8")
         flash(x.stdout)
         return redirect(url_for('home'))

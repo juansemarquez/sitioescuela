@@ -243,7 +243,9 @@ datos de la escuela, y cargar los datos de GitHub:
 
 
 A continuación, hay que ir a una terminal (en GNU/Linux) o a Git bash (en 
-Windows), y **ejecutar *por única vez* un archivo que se llama `publicador.sh`.**
+Windows), y **ejecutar *por única vez* un archivo que se llama `publicador.sh`**,
+desde una terminal (o git bash, si estás en windows), del siguiente modo:
+`./publicador.sh tu-usuario-de-github tu-clave-de-github tu-email`
 
 Por último, en Github, debemos configurar las Pages, haciendo clic en Settings...
 
